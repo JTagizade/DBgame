@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>David Beckham game</title>
+    <link rel="stylesheet" href="css/style.css" charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+  </head>
+  <body>
+
+
+
+<div id="main">
+
+  <button class="button buttonJT button-text-thick button-text-upper" data-text="Replay">
+        <a href="javascript:location.reload(true)"><span>R</span><span>e</span><span>p</span><span>l</span><span>a</span><span>y</span></a>
+  </button>
+
+
+<!-- Your code goes here -->
+
+<div class="round1">
+  <img src="img/db1body.png" id="body1"/>
+  <img src="img/db1 copy.png" id="body11"/>
+  <img src="img/db5body.png" id="body2"/>
+  <img src="img/db5 copy.png" id="body22"/>
+  <img src="img/db6body.png" id="body3"/>
+  <img src="img/db6 copy.png" id="body33"/>
+  <img src="img/db8body.png" id="body4"/>
+  <img src="img/db8 copy.png" id="body44"/>
+  <img src="img/db7body.png" id="body5"/>
+  <img src="img/db7 copy.png" id="body55"/>
+  <img src="img/db3body.png" id="body6"/>
+  <img src="img/db3 copy.png" id="body66"/>
+  <img src="img/db4body.png" id="body7"/>
+  <img src="img/db4.png" id="body77"/>
+</div>
+
+
+  <div class="heads">
+    <div id="head1"></div>
+    <div id="head2"></div>
+    <div id="head3"></div>
+    <div id="head4"></div>
+    <div id="head5"></div>
+    <div id="head7"></div>
+    <div id="head6"></div>
+    <div id="head1"></div>
+    <div id="head3"></div>
+    <div id="head2"></div>
+  </div>
+
+
+
+<!-- THIS SECTION IS FOR CLOSING PART AND CONTAINS THE FILES THAT WILL BE USED -->
+<div class="Background">
+      <img src="img/ball.png" class="ball"/>
+      <img src="img/ball.png" class="ball"/>
+      <img src="img/ball.png" class="ball"/>
+      <img src="img/ball.png" class="ball"/>
+      <img src="img/ball.png" class="ball"/>
+      <img src="img/ball.png" class="ball"/>
+      <img src="img/ball.png" class="ball"/>
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+</div>
+
+
+<script type="text/javascript">
+
+
+
+// THIS SECTION  WILL APPEAR AT THE END OF THE GAME
+// FOR USING THIS FUNCTIONS YOU HAVE TO INVOKE THE 'end()' FUNCTION AT THE VERY LAST ACTION
+
+
+function end(){
+  $('.Background').fadeIn().delay(3200);
+  TweenMax.staggerTo(".ball",0.3, { scale:1,rotation:360, opacity:1, onComplete:replay },0.16);
+}
+
+function replay(){
+  TweenMax.staggerTo(".ball",0.5, { scale:0,delay:2 }, 0.1);
+  $('.Background').fadeOut();
+  $('.button').delay(2700).fadeIn('slow');
+}
+
+
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+// THIS SECTION CONTAINS THE REST SCRIPTS OF THE GAME
+$(document).ready(function(){
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+$('.heads div').draggable({revert: "invalid", containment: "#main", cursor: "move", tolerance: "fit",
+    drag: function(){
+      id = this.id;
+    },
+      });
+
+    $('#body1').droppable({
+              drop: function(){
+                if(id != 'head3'){
+              // falseSound();
+                 $('.heads div').animate({top:0, left:0}, "slow");
+            }else {
+            //  trueSound();
+               $('#body1').hide();
+             $('#body11').fadeIn('fast').delay(2400).animate({top: -192, left:-450}, 1200);
+               $('#head3').hide();
+               $('#body2').delay(3100).animate({left:0}, 1400);
+            }
+              }
+     });
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+     $('#body2').droppable({
+               drop: function(){
+                 if(id != 'head1'){
+              //  falseSound();
+                $('.heads div').animate({top:0, left:0}, "slow");
+             }else {
+              // trueSound();
+                $('#body2').hide();
+              $('#body22').fadeIn('fast').delay(2400).animate({top: -109, left:-450}, 1200);
+                $('#head1').hide();
+                $('#body3').delay(3100).animate({top:102}, 1400);
+             }
+               }
+      });
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+     $('#body3').droppable({
+               drop: function(){
+                 if(id != 'head4'){
+              //  falseSound();
+                $('.heads div').animate({top:0, left:0}, "slow");
+             }else {
+              // trueSound();
+                $('#body3').hide();
+                $('#body33').fadeIn('fast').delay(2500).animate({top: 400, left:60}, 1200);
+                $('#head4').hide();
+                $('#body4').delay(3200).animate({top: -85}, 1400);
+             }
+               }
+      });
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+      $('#body4').droppable({
+                drop: function(){
+                  if(id != 'head2'){
+                // falseSound();
+                  $('.heads div').animate({top:0, left:0}, "slow");
+              }else {
+              //  trueSound();
+                 $('#body4').hide();
+                 $('#body44').fadeIn('fast').delay(2500).animate({top: 250}, 1200);
+                 $('#head2').hide();
+                 $('#body5').delay(3400).animate({top: -178}, 1400);
+              }
+                }
+       });
+
+ // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+       $('#body5').droppable({
+                 drop: function(){
+                   if(id != 'head5'){
+                //  falseSound();
+                  $('.heads div').animate({top:0, left:0}, "slow");
+               }else {
+                // trueSound();
+                  $('#body5').hide();
+                  $('#body55').fadeIn('fast').delay(2500).animate({top: 250}, 1200);
+                  $('#head5').hide();
+                  $('#body6').delay(3400).animate({left: -219}, 1400);
+               }
+                 }
+        });
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+      $('#body6').droppable({
+                drop: function(){
+                  if(id != 'head6'){
+                // falseSound();
+                  $('.heads div').animate({top:0, left:0}, "slow");
+              }else {
+              //  trueSound();
+                 $('#body6').hide();
+                 $('#body66').fadeIn('fast').delay(2500).animate({left: -600}, 1200);
+                 $('#head6').hide();
+                 $('#body7').delay(3400).animate({top: -111}, 1400);
+              }
+                }
+       });
+
+ // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+       $('#body7').droppable({
+                 drop: function(){
+                   if(id != 'head7'){
+                //  falseSound();
+                  $('.heads div').animate({top:0, left:0}, "slow");
+               }else {
+                // trueSound();
+                setTimeout(function(){end()}, 2000);
+                  $('#body7').hide();
+                  $('#body77').fadeIn('fast').delay(2500).animate({left: -400}, 1200);
+                  $('#head7').hide();
+               }
+                 }
+        });
+
+
+
+      // code
+
+    });
+
+
+</script>
+
+  </body>
+</html>
